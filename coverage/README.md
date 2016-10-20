@@ -17,12 +17,12 @@ of the coverage information published to coverage.nodejs.org.
 
 Generation/publication of the code coverage results consists of the following:
 
-* nightly scheduled job - We have a job in jenkins which is scheduled to run at
+* Nightly scheduled job - We have a job in jenkins which is scheduled to run at
   11 EST each night. 
   [node-test-commit-linux-coverage](https://ci.nodejs.org/view/All/job/node-test-commit-linux-coverage/).
 * At the end of the scheduled job it rsnyc's the generated data to the
   benchmarking data machine.  We do this so that once the job is complete
-  the data is in a place where we know we can pull it from,  and that pulling
+  the data is in a place where we know we can pull it from, and that pulling
   that data will not affect any other jobs (for example jobs measuring
   performance on the benchmark machine).
 * At hourly intervals the the data is rsync'd from the benchmarking
@@ -108,7 +108,9 @@ rm -f out/Release/obj.target/node/src/*.gcda
 
 4) Build/test as per normal build/test job.  This is currently:
 
+```
 NODE_TEST_DIR=${HOME}/node-tmp PYTHON=python FLAKY_TESTS=$FLAKY_TESTS_MODE make run-ci -j $(getconf _NPROCESSORS_ONLN)
+```
 
 but modified for that test failures don't stop the rest of the process as the 
 instrumentation seems to have introduced a couple of failures.
@@ -187,8 +189,3 @@ As mentioned earlier, the website will pull updates hourly from
 them in the right place to be served at coverage.nodejs.org.  The key
 required to do this is already in place in order to support the similar process
 for benchmarking.nodejs.org
-
-
-
-
-
