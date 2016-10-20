@@ -11,7 +11,7 @@ these assumptions based on data once the process has been in place for
 a while.
 
 This doc captures the infrastructure in place to support the generation
-of the coverage information published to coverage.nodejs.org.
+of the coverage information published to https://coverage.nodejs.org.
 
 # Steps
 
@@ -20,7 +20,7 @@ Generation/publication of the code coverage results consists of the following:
 * Nightly scheduled job - We have a job in jenkins which is scheduled to run at
   11 EST each night. 
   [node-test-commit-linux-coverage](https://ci.nodejs.org/view/All/job/node-test-commit-linux-coverage/).
-* At the end of the scheduled job it rsnyc's the generated data to the
+* At the end of the scheduled job it rsync's the generated data to the
   benchmarking data machine.  We do this so that once the job is complete
   the data is in a place where we know we can pull it from, and that pulling
   that data will not affect any other jobs (for example jobs measuring
@@ -39,7 +39,7 @@ additions:
 
 
 1. Checkout of the scripts used to generate the coverage
-   These will be moved to github./com/testing/coverage and the job
+   These will be moved to https://github.com/nodejs/testing/coverage and the job
    updated once that is complete:
    ```
    if [ ! -d node-core-coverage ]; then
@@ -171,7 +171,7 @@ data machine requires an ssh key.  Currently we have pegged the job to the
 benchmarking machine 
 [iojs-softlayer-benchmark](https://ci.nodejs.org/computer/iojs-softlayer-benchmark/), 
 have installed the key there, and have added an entry in 
-the .ssh/config file for the iojs user so that connections to the
+the ```.ssh/config``` file for the iojs user so that connections to the
 'coveragedata' go to the benchmarking machine and use the correct key
 (uses the softlayer internal network as opposed to public ip) 
 
